@@ -1,20 +1,20 @@
-Industry,2021
-Agriculture,58084.91784
-Mining,67113.60026
-Utilities,71766.32802
-Construction,64168.81067
-Manufacturing,65418.67138
-Wholesale trade,64761.85845
-Retail trade:,60390.2443
-Transportation and warehousing,65457.93215
-Information,71373.98417
-Finance and insurance,74033.51318
-Real estate and rental and leasing,63904.36533
-"Professional, scientific, and technical services:",70547.04281
-Management of companies and enterprise,67308.69434
-Administrative and waste management services,63995.5912
-Educational services,69813.239
-Health and social assistance,69932.53576
-"Arts, entertainment, and recreation",62558.69073
-Accommodation and food services,57031.5851
-"Other services, except government",64820.51599
+Industry,2001,2002,2003
+Agriculture,37204.5283,36297.29216,34590.96698
+Mining,43702.64382,42503.5679,40923.76989
+Utilities,46400.09844,45085.12033,43297.39951
+Construction,40853.39729,39786.58886,38260.09262
+Manufacturing,41543.98882,40348.22295,38830.77934
+Wholesale trade,40966.81539,39865.81511,38287.04052
+Retail trade:,38506.59608,37369.20656,35885.11373
+Transportation and warehousing,41861.64286,40577.68786,38979.19557
+Information,45552.4092,44054.76716,41969.78208
+Finance and insurance,47258.11487,45768.81972,43447.85469
+Real estate and rental and leasing,40510.04813,39306.27737,37660.90253
+"Professional, scientific, and technical services:",45190.36405,43933.02749,42113.09938
+Management of companies and enterprise,42465.39455,41420.17316,39642.78336
+Administrative and waste management services,40400.85147,39308.65074,37759.11652
+Educational services,45229.82146,44110.18661,42091.40421
+Health and social assistance,43346.29213,42136.04827,40065.51553
+"Arts, entertainment, and recreation",39792.45378,38553.80601,36777.39496
+Accommodation and food services,35645.63149,34499.30884,33095.8391
+"Other services, except government",41986.44688,40866.96995,39125.74354
