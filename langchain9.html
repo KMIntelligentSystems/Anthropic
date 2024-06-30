@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    .line {
+      fill: none;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Set the dimensions and margins of the graph
+    const margin = {top: 20, right: 20, bottom: 50, left: 70},
+          width = 800 - margin.left - margin.right,
+          height = 400 - margin.top - margin.bottom;
+
+    // Append the svg object to the body of the page
+    const svg = d3.select("body")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Parse the data
+    const data = `Industry,2001,2002,2003
+Agriculture,37204.52830,36297.29216,34590.96698
+Mining,43702.64382,42503.56790,40923.76989
+Utilities,46400.09844,45085.12033,43297.39951`;
+
+    const parsedData = d3.csvParse(data);
+
+    // List of groups 
+    const industries = parsedData.map(d => d.Industry)
+
+    // Add X axis
+    const x = d3.scaleLinear()
+      .domain(d3.extent(parsedData, function(d) { return +d.Industry; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", `translate(0, ${height})`)
+      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+    // Add Y axis
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(parsedData, function(d) { return +d[2003]; })])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
+
+    // Color scale
+    const color = d3.scaleOrdinal()
+      .domain(industries)
+      .range(['#e41a1c','#377eb8','#4daf4a'])
+
+    // Draw the lines
+    industries.forEach(function(industry) {
+      svg.append("path")
+        .datum(parsedData.filter(function(d) { return d.Industry == industry }))
+        .attr("fill", "none")
+        .attr("stroke", function(d) { return color(industry) })
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+          .x(function(d) { return x(+d.Industry) })
+          .y(function(d) { return y(+d[2003]) })
+        )
+    })
+
+    // Add legend
+    const legend = svg.append("g")
+      .attr("transform", `translate(0, ${height + margin.bottom - 20})`);
+
+    industries.forEach((industry, i) => {
+      const legendRow = legend.append("g")
+        .attr("transform", `translate(${i * 150}, 0)`);
+        
+      legendRow.append("rect")
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", color(industry));
+
+      legendRow.append("text")
+        .attr("x", 20)
+        .attr("y", 10)
+        .text(industry);
+    });
+  </script>
+</body>
+</html>
